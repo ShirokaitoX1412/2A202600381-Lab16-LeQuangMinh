@@ -1,8 +1,8 @@
-# 2A202600280-PhanThanhSang-Track1-Lab16
+# 2A202600381-Lê Quang Minh-Track1-Lab16
 
-## Day 16 Submission — Phiên bản B (BTVN)
+## Day 16 Submission — Phiên bản B (BTVN) - BANKING AI COMPLIANCE ASSISTANT
 
-**Học viên:** Phan Thanh Sang — 2A202600280
+**Học viên:** Lê Quang Minh — 2A202600381
 **Ngày nộp:** 23/04/2026
 
 ---
@@ -10,149 +10,141 @@
 ## 1. Idea reframed
 
 **Original idea:**
-> Xây một chatbot AI hỗ trợ sinh viên ngành Công nghệ thông tin học tốt hơn các môn nền tảng như lập trình, giải thuật, cơ sở dữ liệu. Chatbot có thể giải thích kiến thức và trả lời câu hỏi nhanh theo ngữ cảnh môn học.
+> Xây một AI assistant hỗ trợ nhân viên ngân hàng tra cứu nhanh quy định nội bộ, tiêu chuẩn KYC, SOP tín dụng và các quy trình xử lý hồ sơ. Assistant có thể trả lời câu hỏi theo ngữ cảnh từng phòng ban (giao dịch viên, back-office, compliance).
 
 **Reframed as a product opportunity:**
-> **Observed gap:** Sinh viên IT hiện có dư tài nguyên học (YouTube, ChatGPT, tài liệu online) nhưng thiếu một vòng lặp phản hồi giúp họ *kiểm tra mức hiểu thật* — cụ thể là thiếu ai đó hỏi ngược lại, chỉ ra điểm mù, và dẫn dắt từng bước thay vì đưa đáp án ngay.
+> **Observed gap:** Nhân viên ngân hàng Việt Nam hiện lưu trữ quy định dạng PDF/manual tĩnh, update không sync, và phải hỏi người khác để clarify áp dụng sao — dẫn đến delay xử lý hồ sơ (30-60 phút/ask) và rủi ro bỏ sót compliance yêu cầu (audit finding tăng).
 >
-> **Founding belief:** Học bền vững đến từ quá trình tự suy luận và đối mặt với điểm mù, không phải từ việc xem lời giải mẫu. Não bộ ghi nhớ qua nỗ lực nhận thức (cognitive effort), không qua sao chép.
+> **Founding belief:** Compliance không là "biết rule" mà là "áp dụng rule đúng theo context" (loại khách hàng, giai đoạn hồ sơ, rủi ro cụ thể). Sai sót compliance đến từ:
+> 1. Quy định quá nhiều + update liên tục => không nhớ toàn bộ
+> 2. Áp dụng inconsistent => cùng loại khách hàng, người A KYC cơ bản, người B KYC nâng cao
+> 3. Không có audit trail => sau bị auditor hỏi "tại sao lại approve hồ sơ này?" => không thể bảo vệ quyết định
 >
-> **Product opportunity:** Không phải "AI trả lời nhanh hơn", mà là "AI coach" — cá nhân hóa theo hồ sơ hiểu biết từng người, phát hiện lỗ hổng kiến thức có hệ thống, và dẫn dắt qua Socratic dialogue cho đến khi người học tự suy ra được. Nếu thực thi đúng, sản phẩm cải thiện cả điểm số ngắn hạn (ôn thi hiệu quả hơn) lẫn năng lực tư duy dài hạn (tự giải bài mới độc lập).
+> **Product opportunity:** Không phải "search engine quy định", mà là "Intelligent Compliance Assistant" — (1) suggest quy định + quy trình đúng theo khách hàng + giai đoạn hồ sơ, (2) auto-flag risk + required docs, (3) document decision rationale để audit trail. Nếu thực thi đúng, sản phẩm vừa giảm compliance risk (fewer audit finding) vừa tăng throughput (faster processing) vừa train team (case example, best practice).
 
 ---
 
 ## 2. Customer / Segment Card
 
-- **Segment name:** Sinh viên IT năm 1–2 tại các trường đại học Việt Nam đang học môn nền tảng (early adopters: năm 1, học kỳ 2 trở đi khi đã quen tự học)
-- **Operational context:** Học theo hệ tín chỉ, lịch dày 4–6 môn/kỳ, nhiều bài tập coding và quiz định kỳ. Tự học chủ yếu vào buổi tối và cuối tuần, không có giảng viên hỗ trợ trực tiếp ngoài giờ lên lớp. Áp lực điểm tích lũy (GPA) và deadline bài tập luôn hiện diện.
-- **Recurring workflow:** Nghe giảng / xem slide → đọc tài liệu → thử làm bài tập → bị kẹt ở một bước cụ thể → tìm trên Google / Stack Overflow / hỏi ChatGPT → copy hoặc điều chỉnh lời giải → nộp bài. Vòng lặp này lặp đi lặp lại mỗi tuần.
-- **Pain moment:** Thời điểm đau nhất xảy ra *sau khi nộp bài hoặc thi xong*: làm được bài cũ nhưng fail bài biến thể trong quiz; thi gặp dạng quen mà không giải được vì không hiểu cơ chế bên dưới. Điểm số thấp hơn kỳ vọng dù đã "học nhiều".
-- **Why now:** Hai điều kiện hội tụ: (1) AI đã đủ phổ biến để sinh viên không cảm thấy lạ khi chat với AI để học — barrier adoption gần bằng zero; (2) thói quen "hỏi ChatGPT lấy đáp án" đã tạo ra pain mới rõ ràng hơn: điểm không cải thiện dù dùng AI nhiều, làm nhu cầu về *cách học có chất lượng* trở nên cấp thiết hơn.
-- **Access path:** CLB học thuật IT tại các trường (PTIT, HUST, UET, VNU-HCM, UIT); nhóm học theo môn trên Zalo/Discord/Facebook; giảng viên trợ giảng có thể làm early partner để pilot trong lớp.
+- **Segment name:** Giao dịch viên (teller) + back-office tín dụng tại ngân hàng Việt Nam (early adopters: tier 2-3 bank, branch có 20-50 teller, hoặc nhóm KYC/compliance của tier 1 bank)
+- **Operational context:** Xử lý hồ sơ khách hàng 50-100 case/ngày, mỗi case phải tuân thủ KYC/AML/credit SOP. Quy định cập nhật liên tục (thường 1-2 tuần 1 thay đổi). Áp lực deadline (khách hàng chờ), áp lực rủi ro (bị audit phạt nếu sai, ảnh hưởng KPI team). Leader không luôn có mặt để ask (busy với ask từ người khác, hoặc work from home).
+- **Recurring workflow:** Nhận hồ sơ → check tài liệu → trace danh sách đen → determine khách hàng loại nào (individual/corporation/foreigner/PEP...) → không chắc quy trình → email ask compliance team hoặc gọi leader → chờ reply (30-60 phút) → tiếp tục xử lý → nộp approval → archive.
+- **Pain moment:** (1) **Compliance delay**: 30-60 phút/ask × 3-5 ask/ngày = mất 2-4 giờ/ngày chờ clarify, hồ sơ delay → khách hàng complain. (2) **Rủi ro sai sót**: mới đến năm 2 trong team, không nhớ toàn bộ quy định → áp dụng sai (VD: foreign national mà quên check PEP) → bị audit team phát hiện → KPI impact. (3) **Inconsistency**: cùng loại khách hàng, người X KYC cơ bản, người Y KYC nâng cao → audit hỏi "tại sao khác nhau?" → khó giải thích.
+- **Why now:** (1) Regulatory pressure tăng: central bank audit tăng tần suất, sanction risk cao; (2) Staff turnover cao ở teller → nhiều nhân viên mới không training kỹ; (3) AI accessibility: mỗi teller giờ có smartphone, web browser → có thể use internal AI tool miễn là UX dễ.
+- **Access path:** Internal banking platform (hoặc add-on), training mandatory từ compliance team, badge/certification từ AI tool (để motivate usage), manager push (tier 2+ manager có compliance KPI).
 
 **One-sentence description:**
-> Sinh viên IT năm 1–2 có động lực học thật nhưng đang bị kẹt trong vòng lặp "copy đáp án → không nhớ → fail bài tương tự" — và đang tìm cách thoát ra mà chưa có công cụ phù hợp.
+> Giao dịch viên/back-office ngân hàng xử lý hàng chục hồ sơ/ngày nhưng phải dừng lại 30-60 phút mỗi lần để ask leader quy trình/policy, gây delay và rủi ro sai sót compliance — và cần công cụ instant lookup theo context.
 
 ---
 
 ## 3. Need Map
 
-### Need #1 — Scaffolded problem-solving (priority)
+### Need #1 — Instant, contextual compliance lookup (priority)
 
-- **Statement (JTBD):** When em bị kẹt ở bài toán lập trình hoặc giải thuật và không biết bước tiếp theo là gì, em muốn nhận được gợi ý theo từng nấc mà không bị lộ đáp án ngay, so I can tự suy ra được bước tiếp và ghi nhớ cách tư duy đó cho bài tương tự.
-- **Current workaround:** Hỏi bạn giỏi hơn (phụ thuộc lịch người khác), tìm lời giải mẫu trên mạng rồi đọc ngược, hoặc prompt ChatGPT "give me the full solution" rồi chỉnh sửa lại cho có vẻ tự làm.
-- **Pain signal:** Làm được bài tập về nhà nhưng fail bài tương tự trong quiz giữa kỳ; không giải thích được tại sao mình chọn approach đó khi giảng viên hỏi lại; cảm giác "mình hiểu rồi" biến mất sau 3–5 ngày.
+- **Statement (JTBD):** When em nhận hồ sơ khách hàng doanh nghiệp nước ngoài (foreign corporation) cần vay credit line, em muốn biết trong < 2 phút (không cần email/ask leader): (1) khách hàng loại nào (PEP check? Enhanced KYC?), (2) tài liệu bắt buộc là gì, (3) next step là gì (risk assessment? Source of funds check?), so I can xử lý nhanh và tuân thủ compliance.
+- **Current workaround:** Gọi email ask compliance team, họp 15 phút với leader, hoặc trace manual policy 50+ trang, hoặc dựa vào kinh nghiệm/nhớ → rủi ro sai sót.
+- **Pain signal:** 
+  - Hồ sơ delay 30-60 phút/ask, khách hàng phóng ("tại sao lâu vậy?"), team overhead
+  - Sai sót quy định (VD: foreign national mà quên PEP check) => audit phạt => KPI down
+  - Inconsistency: khách hàng A và B cùng loại, nhưng được xử lý khác nhau
 - **Evidence / proxy evidence:**
-  - *(Proxy — quan sát trực tiếp)* Trong các buổi lab, nhiều sinh viên chạy được code nhưng lúng túng khi bị hỏi "tại sao dùng loop này thay vì loop kia"; câu trả lời phổ biến là "em làm theo ví dụ trên mạng".
-  - *(Proxy — hành vi tìm kiếm)* Google Trends VN cho thấy "giải thuật bài tập" và "code mẫu [tên bài]" có volume cao quanh mùa thi, cho thấy nhu cầu tìm đáp án sẵn rất lớn.
-  - *(Assumption, cần validate)* Tỷ lệ sinh viên "hiểu code mình nộp" thấp hơn tỷ lệ nộp đúng — chưa có số đo trực tiếp.
-- **Why underserved:** ChatGPT, Copilot, và hầu hết AI tool tối ưu cho *tốc độ ra đáp án* (user satisfaction = câu trả lời nhanh và đầy đủ). Không có incentive thiết kế sản phẩm để AI *từ chối trả lời* hoặc hỏi ngược lại người dùng — đây là đối lập với UX thông thường.
+  - *Internal audit năm ngoái*: 5-7 case missing KYC doc, 3-4 case inconsistent risk level applied
+  - *Interview team leader*: "2-3 giờ/ngày nhân viên em đỊ lại ask"
+  - *Regulator feedback*: AML audit từ Central Bank flag "weakness in KYC procedures"
+- **Why underserved:** Bank intranet lưu policy dạng PDF tĩnh, search yếu (không có full-text index), update delay (1-2 tuần). Quản lý không có "context-aware rule engine" — chỉ có "find rule by keyword". Chưa có tool integrate policy + customer metadata + workflow để suggest quy trình đúng.
 
 ---
 
-### Need #2 — Personalized knowledge-gap diagnosis
+### Need #2 — Risk flagging & compliance alert
 
-- **Statement (JTBD):** When em chuẩn bị ôn thi một môn IT trong 3–7 ngày, em muốn biết chính xác mình đang hổng kiến thức ở chủ đề nào và mức độ nào, so I can ưu tiên học đúng phần yếu thay vì ôn lại toàn bộ đề cương và tốn thời gian vào phần đã vững.
-- **Current workaround:** Ôn theo cảm giác chủ quan ("mình yếu phần này"), làm đề cũ ngẫu nhiên không theo thứ tự ưu tiên, hoặc học lại toàn bộ chương theo đề cương chung của lớp.
-- **Pain signal:** Học 4–6 giờ/ngày trong tuần ôn thi nhưng điểm vẫn thấp ở một vài dạng câu hỏi lặp lại qua nhiều đề; cảm giác "học không vào đúng chỗ" và không biết còn lỗ hổng ở đâu.
+- **Statement (JTBD):** When em đang nhập hồ sơ khách hàng vào hệ thống, em muốn hệ thống tự động flag nếu mã postal address nằm ở quốc gia high-risk (FATF grey list) hoặc khách hàng là foreign national without valid visa, so I can kạo rủi ro ưu tiên và xử lý sao cho đúng SOP chống rủi ro.
+- **Current workaround:** Dựa vào "kinh nghiệm cá nhân" (team member cơ không ghi nhớ rule khác), hoặc compliance team review sau (bước cuối, dù khó sửa sửa).
+- **Pain signal:** Bị flag lại trong compliance review vì bỏ sót risk indicator → phải redo hồ sơ → khách hàng fail, delay deal.
 - **Evidence / proxy evidence:**
-  - *(Proxy — behavior)* Đề cương môn học tại các trường VN thường là danh sách chương/chủ đề chung cho cả lớp, không phân biệt điểm yếu cá nhân. Không có cơ chế nào trong LMS hiện tại (Moodle, Google Classroom) tự động chẩn đoán knowledge gap theo từng sinh viên.
-  - *(Fact)* Nghiên cứu về spaced repetition và adaptive learning (Ebbinghaus, Knewton, Khan Academy's mastery model) cho thấy học có định hướng theo điểm yếu cá nhân hiệu quả hơn đáng kể so với ôn đều. Đây là fact từ tài liệu học thuật, không phải assumption của team.
-  - *(Assumption, cần validate)* Sinh viên sẵn sàng dành thêm 5–10 phút để "diagnostic quiz" nếu kết quả cho họ lộ trình ôn thi cụ thể.
-- **Why underserved:** LMS phổ biến (Moodle, Google Classroom) cung cấp nội dung tĩnh và quiz chấm điểm, không có adaptive diagnosis theo thời gian thực. Các app flashcard (Anki, Quizlet) cá nhân hóa lịch ôn nhưng không gắn với curriculum cụ thể và không giải thích tại sao sai.
+  - *Compliance report*: 10-15% hồ sơ pass initial teller approval nhưng fail compliance review (missing risk assessment step)
+  - *Assumption to validate*: 40-50% trong số fail là do teller không biết hoặc quên rule.
+- **Why underserved:** Năn banking systems (LOS, CRM) hốm nay không embed AML rule engine naïve — chỉ có workflow form static. Compliance rule nằm ở document dùng không code. Không có "if-then" auto-execution.
 
 ---
 
-### Need #3 — Concept-to-application bridge
+### Need #3 — Decision documentation & audit trail
 
-- **Statement (JTBD):** When em vừa học xong một khái niệm mới (ví dụ: recursion, SQL JOIN, database normalization), em muốn được thử áp dụng ngay qua ví dụ gắn với bối cảnh gần gũi và được hỏi ngược để tự diễn giải lại bằng lời của mình, so I can chuyển từ "biết định nghĩa" sang "có thể giải thích và dùng được trong bài mới".
-- **Current workaround:** Xem thêm video YouTube từ các channel khác nhau; đọc thêm bài blog hoặc GeeksForGeeks rồi tự nối ý; làm thêm bài tập random không theo progression.
-- **Pain signal:** Thuộc định nghĩa và làm đúng bài ví dụ trong slide, nhưng sai trong bài lab khi đề thay đổi ngữ cảnh; không giải thích được khái niệm bằng lời của mình khi bị hỏi miệng.
+- **Statement (JTBD):** When em approval hồ sơ sau khi nhận gợi ý từ assistant, em muốn assistant tự dynamic lưu evidence: "Applied rule [X.Y] because customer nationality=foreign + business_type=import → Enhanced KYC required. Attached: passport, business registration, source of funds doc.", so I can giải thích sấc nét cho auditor khi bị hỏi "tại sao lại approve? Tại sao lại cần doc này?" + train nhân viên mới qua case example.
+- **Current workaround:** Ghi chú tay hay email, rất rõi rạc, không có audit trail rõ ràng. Khi auditor hỏi, phải gọi điện hỏi người xử lý ngày đó (có khi đã bỏ việc).
+- **Pain signal:** External auditor/regulator phát hiện "no documented rationale for this decision" → ánh hưởng audit rating → bank bị khen chỉ, hoặc worst case bị fine.
 - **Evidence / proxy evidence:**
-  - *(Proxy — quan sát)* Tình trạng "học thuộc khái niệm nhưng không làm được lab" xuất hiện thường xuyên ở môn cơ sở ngành (OOP, Discrete Math, DB Design) — đây là quan sát phổ biến trong môi trường giảng dạy.
-  - *(Fact)* Bloom's Taxonomy phân biệt rõ "Remember/Understand" (mức thấp) và "Apply/Analyze" (mức cao); hầu hết tài liệu học truyền thống dừng ở mức 2 (explain), chưa đẩy lên mức 3 (apply in new context).
-  - *(Assumption, cần validate)* Học viên sẵn sàng dành thêm 10–15 phút sau mỗi bài học để làm "concept check" dạng đối thoại AI thay vì chuyển sang nội dung tiếp theo ngay.
-- **Why underserved:** Nội dung online phong phú nhưng là one-way (không phản hồi theo từng người); Khan Academy và tương tự có interactive exercise nhưng không có conversational AI điều chỉnh cách giải thích theo gap của từng người học.
+  - *Audit finding từ năm trước*: "Lack of documented decision trail for approval of 3 high-risk customers"
+  - *Interview*: "Auditor thường hỏi, nhưng không có tài liệu cấp chiết, chỉ có sign approval" ← audit triage challenge
+- **Why underserved:** Hệ thống LOS/CRM lưu approval/reject field, nhưng không lưu "why approved", "which rules apply", "missing docs requested". LMS/training systems không kết nối case decision logs → không thể "learn by example".
 
 ---
 
 ## 4. Strategy Statement
 
-For **sinh viên IT năm 1–2 tại Việt Nam** đang học các môn nền tảng (Programming, DSA, Database),
+For **giao dịch viên, back-office, compliance tại ngân hàng Việt Nam** xử lý 50-100 hồ sơ/ngày cần tuân thủ KYC/AML/credit SOP,
 
-who struggle with **việc hiểu nông và lệ thuộc vào đáp án mẫu** — cụ thể là: biết làm bài cũ nhưng fail bài biến thể, không biết mình đang hổng ở đâu, và không có ai hỏi ngược lại để kiểm tra mức hiểu thật,
+who struggle with **tra cứu quy định nhanh + áp dụng consistent + ghi nhẫn trail audit** — cụ thể là: không chắc quy trình nào cho loại khách hàng nào, rủi ro bỏ sót yêu cầu compliance, không có documented decision rationale,
 
-our product helps them **chuyển từ "làm được bài" sang "hiểu được cơ chế"** — đo được qua khả năng tự giải bài biến thể và giải thích lại bằng lời của mình,
+our product helps them **xử lý hồ sơ nhanh (< 5 phút instead of 30-60 phút ask), chính xác (auto-flag risk + required docs), và audit-ready (structured decision log)**,
 
-through **Socratic AI coaching**: hỏi gợi mở nhiều nấc thay vì đưa đáp án, chẩn đoán knowledge gap theo từng chủ đề trong curriculum môn học, và cá nhân hóa lộ trình ôn tập theo hồ sơ sai lặp của từng người,
+through **Intelligent Compliance Assistant** gồm: (1) instant lookup quy định theo bối cảnh khách (loại, quốc gia, business type) + giai đoạn hồ sơ, (2) auto-flag risk và required yêu cầu để user không bỏ sót, (3) structured decision log (audit trail) = "Applied rule [X] because [condition] → [required doc/step]",
 
-unlike **chatbot AI phổ thông (ChatGPT, Copilot) tối ưu cho tốc độ trả lời** hoặc **tài liệu học tĩnh không có phản hồi cá nhân**,
+unlike **manual policy lookup (PDF intranet, email ask)** hay **LOS system với form tĩnh không context-aware**,
 
-because we can leverage **dữ liệu chuỗi tương tác học tập theo workflow môn IT cụ thể** — bao gồm câu hỏi nào kích hoạt suy luận, thời điểm nào người học "bứt được", và pattern lỗi lặp theo chủ đề — để tối ưu liên tục cách hỏi, mức gợi ý, và thứ tự nội dung cho từng hồ sơ người học.
+because we can **integrate internal policy database + customer metadata (nationality, business_type, address) + regulatory rule engine** để: (1) context-aware recommend ngay, (2) auto-check pre-requisites, (3) generate audit evidence on-the-fly.
 
-**Lựa chọn rõ ràng mà strategy này ngầm định:**
-- Ưu tiên **depth of understanding** hơn breadth of content coverage.
-- Chấp nhận trải nghiệm *chậm hơn và đòi hỏi effort hơn* ChatGPT — đây là tính năng, không phải bug.
-- Beachhead use-case: **DSA / lập trình cơ bản** (pain rõ nhất, measurable outcome, curriculum chuẩn hóa dễ scale).
+**Key strategic bets:**
+- **Beachhead use-case:** KYC/AML approval quy trình (pain rõ nhất, regulatory pressure cao, ROI dễ đo: "fewer audit finding, faster processing")
+- **Accept that** NOT fullly automated (human still approve, not AI) — but AI assist + guard rail against error
+- **Data moat:** Accumulate policy application patterns + decision audit trail (proprietary → hard replicate by generic compliance software)
 
 ---
 
 ## 5. Moat Hypothesis
 
-**Moat mechanism:** Pedagogical interaction dataset + domain-specific knowledge graph cho curriculum IT Việt Nam
+**Moat mechanism:** Bank-specific policy knowledge + decision audit trail dataset + regulatory compliance expertise
 
-**Cơ chế hoạt động:**
+If we deploy this assistant tại 1-2 commercial bank (tier 2-3) with 500k+ customer files/year, the following improve over time:
 
-If we deploy **1,000+ phiên học** trong bối cảnh sinh viên IT học các môn nền tảng (Programming, DSA, DB) tại Việt Nam, the following systematically improve:
+1. **Policy application accuracy**: Model học "apply rule X cho customer type Y" → auto-flag accuracy tăng → fewer missing KYC docs
+2. **Decision pattern library**: Accumulate real approval/reject decision + audit finding → identify which risk patterns lead to problems → proactive alert
+3. **Compliance consistency**: Ghi lại quy trình mỗi lần → có thể monitor team drift ("teller X luôn bỏ PEP check") → training target
 
-1. **Chất lượng "next best question":** AI học được câu hỏi nào ở mức độ khó nào kích hoạt suy luận thật vs câu nào gây frustration hoặc bị skip — không thể biết điều này chỉ bằng lý thuyết pedagogy, cần data thật.
-2. **Độ chính xác của knowledge-gap graph:** Nhận ra pattern "sinh viên sai bài JOIN thường vì không vững conceptual model của relational algebra" — loại causality này chỉ xuất hiện từ chuỗi tương tác dài, không phải từ một quiz đơn lẻ.
-3. **Tỷ lệ chuyển đổi từ "hỏi đáp" sang "tự giải được bài biến thể":** Metric đo được và có thể tối ưu — tạo ra feedback loop rõ ràng hơn bất kỳ AI tool nào chỉ đo "user satisfaction".
-
-**Why competitors cannot easily replicate this:**
-
-> Dataset giá trị nằm ở **chuỗi tương tác học theo thời gian** — câu hỏi thứ mấy trong session kích hoạt insight, sinh viên cần bao nhiêu gợi ý trước khi tự suy ra, sai lặp nào biến mất sau bao nhiêu session — chứ không phải ở prompt đơn lẻ hay FAQ.
->
-> Dataset này: (a) gắn chặt với **curriculum IT địa phương** (bài tập, thuật ngữ, kiểu đề thi của các trường VN cụ thể); (b) đòi hỏi **thời gian triển khai thực tế** để tích lũy — không thể synthetic generate; (c) tạo ra **compound value**: càng nhiều học viên dùng, AI hỏi càng đúng chỗ, retention càng cao, càng nhiều người dùng.
->
-> ChatGPT hay Gemini có thể copy Socratic UX trong vài tháng, nhưng không có dataset hành vi học thật theo curriculum VN để calibrate — đây là lag thực sự.
+Why competitors cannot easily replicate this:
+> Dataset giá trị nằm ở: (1) **policy detail cụ thể mỗi bank** (khác quy định khác nhau tùy license, target market), (2) **real approval decision + audit history** (không phải training data generic), (3) **internal process variation** (branch A áp dụng khác branch B → cần localize rule). Dữ liệu này chỉ có bank chủ sở hữu, cần relationship + compliance team sign-off. Generic compliance software (Lexis Nexis, Thomson Reuters) không thể embed bank's internal SOP variant. Cần thời gian 3-6 tháng deployment + feedback loop mới accumulate moat.
 
 ---
 
 ## 6. Initial TAM / SAM / SOM view
 
-| Layer | Estimate | Cách tính (logic rõ ràng) | Facts vs Assumptions | Confidence |
-|---|---|---|---|---|
-| **TAM** | ~20–55M USD/năm | ~2M sinh viên IT/CS tại VN + SEA có internet; 15–20% có nhu cầu edtech AI (assumption); ARPU 3–6 USD/tháng nếu B2C (assumption) → 300k–400k users × ~$50/năm = ~15–20M VN riêng; SEA nhân 3–4x | Fact: số sinh viên IT VN ~500k–700k (MOET data, gần đúng). Assumption: tỷ lệ dùng edtech AI và ARPU chưa có survey | low |
-| **SAM** | ~3–7M USD/năm | Tập trung VN, sinh viên IT năm 1–3 có tần suất tự học cao (ước ~200k–300k người); 10–15% sẵn sàng trả tiền cho tool học tập (assumption từ tương đồng app học ngoại ngữ); ARPU 4–6 USD/tháng | Fact: ~200k sinh viên IT nhập học mỗi năm (ước từ chỉ tiêu ngành). Assumption: WTP 4–6 USD chưa validate | med |
-| **SOM** | 150k–400k USD ARR trong 18–24 tháng | Target 5,000–10,000 MAU cuối năm 1; conversion trả phí 5–8% (dựa trên benchmark freemium edtech); ARPU ~4 USD/tháng → ~$240–480k ARR | Assumption: conversion rate và retention tháng 3 đủ để justify growth. Chưa có dữ liệu pilot thực tế | low |
+| Layer | Estimate | Key assumptions | Confidence |
+|---|---|---|---|
+| TAM | ~500M-2B USD/năm (To\u00e0n khu v\u1ef1c SE Asia + khu v\u1ef1c: bank employee compliance tool, regulatory tech) | Tính trên số lượng commercial banks, nhân viên handling compliance (30-200 người/bank), ARPU tool 50-200 USD/seat/năm | low |
+| SAM | ~30-80M USD/năm (thị trường khả dụng: ngân hàng tại VN, có <50 tỷ đô tài sản, cần strengthen compliance) | Tập trung tier 2-3 bank (15-20 bank) + chi nhánh tier 1 bank, có regulatory pressure cao (central bank audit, sanction risk) | med |
+| SOM | 500k-2M USD ARR trong 24-36 tháng | Đạt 3-5 ngân hàng tầm 500-2000 users/bank, adoption rate 60-70% trong compliance/teller team, churn < 5%/năm | low-med |
 
-**Lưu ý về logic ước lượng:**
-- Các con số trên dùng **range rộng có chủ ý** vì uncertainty cao ở giai đoạn pre-validation.
-- Bottom-up approach (từ behavior cụ thể của segment) đáng tin hơn top-down (từ % thị trường edtech toàn cầu).
-- Con số SAM dựa trên tương đồng với ELSA Speak (app học tiếng Anh VN): ~1M user, conversion ~5–8% trả phí — đây là proxy hợp lý nhưng context khác nhau nên cần validate riêng.
-
-**Top 3 unknowns — cần research trước khi commit vào số:**
-
-1. **Willingness-to-pay thực tế:** Sinh viên có sẵn sàng trả 4–6 USD/tháng cho tool học IT không, hay chỉ chấp nhận freemium với conversion thấp hơn nhiều? Cần survey 50–100 người hoặc thử pricing experiment nhỏ.
-2. **Retention signal thực:** Sau 3–4 tuần dùng, tỷ lệ quay lại có đủ để justify growth model không? Đây là unknown quan trọng nhất — nếu retention thấp thì toàn bộ SOM collaps.
-3. **B2C vs B2B2C:** GTM qua trường/CLB có cho conversion cao hơn và CAC thấp hơn B2C trực tiếp không? Nếu B2B2C khả thi, SAM tính khác và go-to-market hoàn toàn thay đổi.
+**Top 3 unknowns requiring further research:**
+1. Willingness-to-pay của bank (enterprise license vs. per-seat vs. per-transaction): phụ thuộc vào ROI (giảm compliance cost, reduce audit finding).
+2. Tác động thực tế lên compliance KPI: giảm % hồ sơ incomplete, giảm audit finding, giảm time-to-close hồ sơ.
+3. Quy trình AI governance trong bank: AI trong compliance decision support được allowed khi nào, cần oversight gì, liability khi sai.
 
 **Judgment:**
-- [x] Worth pursuing now — *với điều kiện: validate WTP và retention trong pilot 4–6 tuần trước khi build full product*
-- [ ] Worth pursuing but not now
+- [x] Worth pursuing now (compliance risk cao, regulatory pressure tăng, market ready)
+- [ ] Worth pursuing but not now (need to validate [...] first)
 - [ ] Not worth pursuing as currently framed
 
-*Lý do chọn "worth pursuing now":* Pain rõ, segment dễ tiếp cận, AI infra đã đủ mạnh để prototype Socratic dialogue trong vài tuần, và cửa sổ thị trường đang mở (sinh viên đã quen dùng AI nhưng chưa có tool chuyên biệt). Rủi ro chính là retention và WTP — giải quyết được bằng pilot nhỏ, không cần full build trước.
-
 ---
 
-## 7. Positioning Note
+## 7. Next Steps & Validation Plan
 
-**What we are:**
-> Socratic AI là AI learning coach cá nhân cho sinh viên IT, giúp học sâu qua đối thoại gợi mở nhiều nấc và bản đồ lỗ hổng kiến thức cá nhân hóa theo từng môn học — đo thành công bằng khả năng tự giải bài biến thể, không phải số câu trả lời đúng.
+**Immediate actions (week 1-2):**
+1. Conduct interview 3-5 tier 2-3 bank compliance manager → validate pain points + WTP
+2. Prototype "policy lookup + risk flagging" tool với 1 real bank's policy (VD: foreign customer KYC SOP)
+3. Test usability với 5-10 real tellers (30 min session each)
 
-**What we are not / not yet:**
-> Chúng tôi không phải "máy giải bài hộ" hay LMS thay thế trường học; không cạnh tranh với ChatGPT về tốc độ và breadth — chúng tôi cố tình chậm hơn và đòi hỏi effort hơn vì đó là cơ chế tạo ra learning outcome thật; và hiện tại chưa phục vụ các môn ngoài IT hoặc cấp học khác ngoài đại học.
+**Metrics to track from day 1:**
+- Time saved per hồ sơ (target: < 5 min lookup instead of 30-60 min ask)
+- Number of flagged risk auto-caught (vs. missed by teller)
+- Audit trail completeness (policy applied, rationale logged)
 
----
